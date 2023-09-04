@@ -1,0 +1,153 @@
+package ch02.sec01.exam03;
+
+public class VariableUseExample {
+
+	public static void main(String[] args) {
+		int hour = 3;
+		int minute = 5;
+		System.out.println(hour + "시간 " + minute + "분");
+		
+		int totalMinute = (hour*60) + minute;
+		System.out.println("총" + totalMinute + "분");
+	}
+
+}
+
+
+package ch02.sec01.exam05;
+
+public class PrintExample { 
+	
+	public static void main(String[] args) {
+		int value = 123;
+		System.out.printf("상품의 가격: %d원\n", value);
+		
+		double area = 3.14159 * 10 * 10;
+		System.out.printf("반지름이 %d인 원의 넓이: %10.2f\n", 10, area);
+		
+		String name = "홍길동";
+		String job = "도적";
+		System.out.println("%6d | ");
+	}
+
+}
+
+
+
+package ch02.sec01.exam05;
+
+import java.util.Scanner;
+
+public class ScannerRExample {
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("X값 입력: ");
+		String strX = scanner.nextLine();
+		int x = Integer.parseInt(strX);
+		
+		System.out.print("y값 입력: ");
+		String strY = scanner.nextLine();
+		int y = Integer.parseInt(strY);
+		
+		int result = x + y;
+		System.out.println("x + y: " + result);
+		System.out.println();
+	}
+
+}
+
+
+
+package ch02.sec01.exam05;
+
+public class test {
+
+	public static void main(String[] args) {
+		String name = "감자바";
+		int age = 25;
+		String tel1 = "010", tel2 = "123", tel3 = "4567";
+		System.out.println();
+		System.out.print();
+		System.out.printf();
+	}
+
+}
+
+
+
+
+package PopupQuiz.ch02;
+
+public class Example01 {
+
+    public static void main(String[] args) {
+        String name = "감자바";
+        int age = 25;
+        String tel1 = "010", tel2 = "123", tel3 = "4567";
+        System.out.println("이름: " + name);
+        System.out.print("나이: " + age + "\n");
+        System.out.printf("전화: %1$s-%2$s-%3$s", tel1, tel2, tel3);
+    }
+
+}
+
+
+
+
+package PopupQuiz.ch02;
+
+import java.util.Scanner;
+
+public class Example02 {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("첫번째 수: ");
+		String strNum1 = scanner.nextLine();
+		
+		System.out.print("두번째 수: ");
+		String strNum2 = scanner.nextLine();
+		
+		int num1 = Integer.parseInt(strNum1);
+		int num2 = Integer.parseInt(strNum2);
+		int result = num1 + num2;
+		System.out.println("덧셈 결과: " + result);
+	}
+
+}
+
+
+
+
+package PopupQuiz.ch02;
+
+import java.util.Scanner;
+
+public class Example03 {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.prinln("[필수 정보 입력]");
+		System.out.print("이름: ");
+		String name = scanner.nextLine();
+		
+		System.out.print("주민번호 앞 6자리: ");
+		String ssn = scanner.nextLine();
+		
+		System.out.print("전화번호: ");
+		String tel = scanner.nextLine();
+		
+		System.out.println();
+		
+		System.out.println("이름: " + name);
+        System.out.print("주민번호 앞 6자리: " + ssn);
+        System.out.printf("전화: %1$s-%2$s-%3$s", tel);
+	
+
+	}
+
+}
