@@ -1,0 +1,251 @@
+< Data type 분류 >
+
+기본타입 - 정수 타입, 실수 타입, 논리 타입
+
+정수 타입 : byte, short, char, int, long 
+실수 타입 : float, double
+논리 타입 : boolean
+
+정수 리터럴 
+- 컴파일러는 정수 리터럴을 int 타입 값으로 간주
+- int 타입 값의 허용 범위를 초과하는 리터럴에
+  l을 붙혀 long타입으로 바꾸기 
+
+실수 리터럴
+- 컴파일러는 실수 리터럴을 double 타입으로 간주 
+- float 타입에 대입할 때는, 릴터럴 뒤에 f를 붙여 바꾸기
+
+
+< 자동 타입 변환 >
+
+- 값의 허용 범위 크기 -
+byte < short < char < int < long < float < double 
+
+
+<강제 타입 변환 > 
+- 값의 허용 범위가 큰 타입을 허용범위가 작은 타입으로 강제변환 
+- 작은 허용 범위 타입 = (작은 허용 범위 타입) 큰 허용 범위 타입 
+
+
+
+package sec03.exam02;
+
+public class PrimitiveAndStringConversionExample {
+	public static void main(String[] args) {
+		int value1 = Integer.parseInt("10");
+		double value2 = Double.parseDouble("3.14");
+		boolean value3 = Boolean.parseBoolean("true");
+		
+		System.out.println("value1 " + value1);
+		System.out.println("value2 " + value2);
+		System.out.println("value3 " + value3);
+		
+		String str1 = String.valueOf(10);
+		String str2 = String.valueOf(3.14);
+		String str3 = String.valueOf(true);
+		
+		System.out.println("str1 " + str1);
+		System.out.println("str2 " + str2);
+		System.out.println("str3 " + str3);
+	}
+}
+
+
+
+package sec03.exam02;
+
+public class OpreationPromotionExample {
+	public static void main(String[] args) {
+		byte result1 = 10 + 20;
+		System.out.println("result1: " + result1);
+		
+		byte v1 = 10;
+		byte v2 = 20;
+		int result2 = v1 + v2;
+		System.out.println("result2 " + result2);
+		
+		byte v3 = 10;
+		int v4 = 100;
+		long v5 = 1000l;
+		long result3 = v3 + v4 + v5;
+		System.out.println("result3: " + result3);
+		
+		char v6 = 'A';
+		char v7 = 1;
+		int result4 = v6 + v7;
+		System.out.println("result4: " + result4);
+		System.out.println("result4: "  + (char) result4);
+		
+		int v8 = 10;
+		double result5 = v8 / 4;                      //정수끼리 연산하면 정수
+		System.out.println("result5: " + result5);
+		
+		int v9 = 10;
+		double result6 = v9 / 4.0;                    // 정수와 실수를 연산하면 실수
+		System.out.println("result6: " + result6);
+		
+		int v10 = 1;
+		int v11 = 2;
+		double result7 = (double) v10 / v11;
+		System.out.println("result7: " + result7);
+		
+	}
+}
+
+
+
+
+package sec03.exam02;
+
+public class FloatDoubleExample {
+
+	public static void main(String[] args) {
+		float var1 = 3.14f;
+		double var2 = 3.14;
+		
+		float var3 = 0.1234567890123456789f;
+		double var4 = 0.1234567890123456789;
+		
+		System.out.println("var1: " + var1);
+		System.out.println("var2: " + var2);
+		System.out.println("var3: " + var3);
+		System.out.println("var4: " + var4);
+		
+		double var5 = 3e6;
+		float var6 = 3e6f;
+		double var7 = 2e-3;
+		
+		System.out.println("var5: " + var5);
+		System.out.println("var6: " + var6);
+		System.out.println("var7: " + var7);
+		
+	}
+
+}
+
+
+
+
+package sec03.exam02;
+
+public class CharExample {
+
+	public static void main(String[] args) {
+		char c1 = 'A';
+		char c2 = 65;
+		char c3 = 0x0041;
+		
+		char c4 = '가';
+		char c5 = 44032;
+		char c6 = 0xac00;
+		
+		char c7 = ' ';
+		
+		System.out.println(c1);
+		System.out.println(c2);
+		System.out.println(c3);
+		System.out.println(c4);
+		System.out.println(c5);
+		System.out.println(c6);
+		System.out.println(c7);
+
+	}
+
+}
+
+
+
+
+
+package sec03.exam02;
+
+public class CastingExample {
+
+	public static void main(String[] args) {
+		int var1 = 10;
+		byte var2 = (byte) var1;
+		System.out.println(var2);
+		
+		long var3 = 300;
+		int var4 = (int) var3;
+		System.out.println(var4);
+		
+		int var5 = 65;
+		char var6 = (char) var5;
+		System.out.println(var6);
+		
+		double var7 = 3.14;
+		int var8 = (int) var7;
+		System.out.println(var8);
+		
+
+	}
+
+}
+
+
+
+
+
+package ch02.sec01.exam05;
+
+public class PromotionExample {
+	public static void main (String[] args) { 
+		byte byteValue = 10;
+		int intValue = byteValue;
+		System.out.println("intValue: " + intValue);
+		
+		char charValue = '가';
+		intValue = charValue;
+		System.out.println("가의 유니코드 : " + intValue);
+		
+		intValue = 50;
+		long longValue = intValue;
+		System.out.println("longValue: " + longValue);
+		
+		longValue = 100;
+		float floatValue = longValue;
+		System.out.println("floatValue:" + floatValue);
+		
+		floatValue = 100.5f;
+		double doubleValue = floatValue;
+		System.out.println("doubleValue: " + doubleValue);
+	}
+
+}
+
+
+
+
+
+package ch02.sec01.exam05;
+
+public class EscapeExample {
+
+	public static void main(String[] args) {
+		
+		System.out.println("번호\t이름\t직업");
+		System.out.println("행 단위 출력\n");
+		System.out.println("행 단위 출력\n");
+		System.out.println("우리는 \"개발자\" 입니다.");
+		System.out.println("봄\\여름\\가을\\겨울");
+	}
+}
+
+
+
+
+package sec03.exam02;
+
+public class test {
+
+	public static void main(String[] args) {
+		long var1 = 2l;
+		float var2 = 1.8f;
+		double var3 = 2.5;
+		String var4 = "3.0";
+		int result = (int) (var1 + var2 + var3 + Double.parseDouble(var4));
+		System.out.println(result);
+	}
+
+}
