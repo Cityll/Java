@@ -1,0 +1,208 @@
+1. java swing 찾아보기 
+- 텍스트 영역 만들기 예제, 랜덤위치의 숫자를 순서대로 클릭하여 없애기(롤문철 만든사람)
+2. 연산자 복습하기 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package ch03.sec01;
+
+public class IncreaseDecreaseOperatorExample {
+
+	public static void main(String[] args) {
+		int x = 10;
+		int y = 10;
+		int z;
+		
+		System.out.println("----------------------------");
+		x++;
+		++x;
+		System.out.println("x = " + x);
+		
+		System.out.println("----------------------------");
+		y--;
+		--y;
+		System.out.println("y = " + y);
+		System.out.println("----------------------------");
+		z = x++;
+		System.out.println("z = " + z);
+		System.out.println("x = " + x);
+		
+		System.out.println("----------------------------");
+		z = ++x;
+		System.out.println("z = " + z);
+		System.out.println("x = " + x);
+	
+		System.out.println("----------------------------");
+		z = ++x + y++;
+		System.out.println("z = " + z);
+		System.out.println("x = " + x);
+		System.out.println("y = " + y);
+	}
+
+}
+
+
+package ch03.sec01;
+
+public class ArithmeticOperatorExample {
+
+	public static void main(String[] args) {
+		byte v1 = 10;
+		byte v2 = 4;
+		long v3 = 10L;
+		
+		int result1 = v1 + v2;
+		System.out.println("result1: " + result1);
+		
+		long result2 = v1 + v2 - v3;
+		System.out.println("result2: " + result2);
+		
+		int result3 = v1 / v2;
+		System.out.println("result3: " + result3);
+		
+		double result4 = (double) v1 / (double) v2;
+		System.out.println("result4: " + result4);
+		
+		int result5 = v1 % v2;
+		System.out.println("result5: " + result5);
+	}
+
+}
+
+swing을 이용해 만든 코드 
+
+package GUI;
+
+import javax.swing.*;
+
+public class ToDoList {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("To-Do List");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        JTextField toDoTextField = new JTextField(20);
+        JButton addButton = new JButton("추가");
+        DefaultListModel<String> toDoListModel = new DefaultListModel<>();
+        JList<String> toDoList = new JList<>(toDoListModel);
+
+        addButton.addActionListener(e -> {
+            String toDo = toDoTextField.getText();
+            if (!toDo.isEmpty()) {
+                toDoListModel.addElement(toDo);
+                toDoTextField.setText("");
+            }
+        });
+
+        panel.add(toDoTextField);
+        panel.add(addButton);
+        panel.add(new JScrollPane(toDoList));
+
+        frame.setVisible(true);
+    }
+}
+
+
+package GUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class start {
+	
+    // ToDo 목록을 저장할 DefaultListModel 생성
+    private DefaultListModel<String> toDoListModel = new DefaultListModel<>();
+	private JButton b1;
+	private JButton b2;
+	private JButton b3;
+
+    public start() {
+        // JFrame 생성
+        JFrame frame = new JFrame("To-Do List");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
+
+        // JPanel 생성
+        b1 = new JButton("<");
+        b2 = new JButton("Today");
+        b3 = new JButton(">");
+        
+        JPanel panel = new JPanel();
+        
+        panel.add(b1);
+        panel.add(b2);
+        panel.add(b3);
+        panel.setBackground(Color.gray);
+        
+        frame.add(panel);
+        frame.setSize(600, 600);
+
+        // 레이아웃 매니저 설정 (여기서는 BorderLayout 사용)
+        panel.setLayout(new BorderLayout());
+
+        // 할 일 입력 필드 생성
+        JTextField toDoTextField = new JTextField();
+        panel.add(toDoTextField, BorderLayout.NORTH);
+
+        // 할 일 추가 버튼 생성
+        JButton addButton = new JButton("+");
+        panel.add(addButton, BorderLayout.SOUTH);
+        panel.setSize(30, 30);
+
+        // 할 일 목록을 표시할 JList 생성
+        JList<String> toDoList = new JList<>(toDoListModel);
+        panel.add(new JScrollPane(toDoList), BorderLayout.SOUTH);
+
+        // 추가 버튼 클릭 시 이벤트 처리
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String toDo = toDoTextField.getText();
+                if (!toDo.isEmpty()) {
+                    toDoListModel.addElement(toDo);
+                    toDoTextField.setText("");
+                }
+            }
+        });
+
+        // JFrame 표시
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new start(); // 애플리케이션 실행
+            }
+        });
+    }
+}
