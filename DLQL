@@ -1,0 +1,99 @@
+SELECT ENAME 
+     , JOB
+     , DEPTNO
+     , AVG(SAL)
+  FROM EMP
+ GROUP BY JOB 
+        , DEPTNO
+;
+
+SELECT *
+  FROM ( 
+        SELECT JOB 
+             , DEPTNO
+             , SAL
+          FROM EMP
+       )
+ PIVOT (AVG(SAL) 
+        FOR DEPTNO IN (10 AS "ACCOUNTING",
+                       20 AS "RESEARCH", 
+                       30 AS "SALES"))
+ ORDER BY 1
+;
+
+SELECT JOB 
+     , AVG(DECODE(DEPTNO, 10, SAL)) AS ACCOUNTING
+     , AVG(DECODE(DEPTNO, 20, SAL)) AS RESEARCH
+     , AVG(DECODE(DEPTNO, 30, SAL)) AS SALES
+  FROM EMP
+ GROUP BY JOB 
+ ORDER BY 1
+;
+
+
+
+내가 필요한 정보가 다른 테이블에 있는데 내가 보고있는 테이블도 필요해 = JOIN  
+SELECT T1.EMPNO
+     , T1.ENAME 
+     , T1.DEPTNO
+     , T2.LOC
+  FROM EMP T1
+       JOIN 
+       DEPT T2
+       ON T1.DEPTNO = T2.DEPTNO 
+;
+
+SELECT *
+  FROM DEPT 
+;
+
+
+
+SELECT T1.EMPNO
+     , T1.ENAME
+     , T1.DEPTNO
+     , T2.LOC
+  FROM EMP T1
+       JOIN 
+       DEPT T2
+       ON T1.DEPTNO = T2.DEPTNO
+ WHERE T1.ENAME = 'SCOTT'
+;
+
+
+SELECT T1.EMPNO
+     , T1.ENAME
+     , T1.DEPTNO
+     , T2.LOC
+  FROM EMP T1
+       LEFT OUTER JOIN 
+       DEPT T2
+       ON T1.DEPTNO = T2.DEPTNO 
+ WHERE T1.ENAME = 'SCOTT'
+;
+와 
+SELECT T1.EMPNO
+     , T1.ENAME
+     , T1.DEPTNO
+     , T2.LOC
+  FROM EMP T1
+ LEFT OUTER JOIN 
+       DEPT T2
+       ON T1.DEPTNO = T2.DEPTNO
+       AND T1.ENAME = 'SCOTT'
+;
+는 다름 결과가 밑에 있는 코드가 DEPTNO를 붙이는데 조건이 SCOTT만 붙이는거니까 스캇은 DEPTNO가 붙고 나머진 안붙고 결과가 다 나타남
+
+INNER은 결과가 같고 OUTER은 결과가 다름ㄱ
+
+
+두개 테이블 조인만 문제로 냄 3개는 안냄
+평소 강조한거 문제로 냄, 강조 안한거에서 낸거는 사진찍은거 
+1번문제는 같이 품 총  11문제 피봇을 디코드 써서 그룹바이 한거 문제로 나왔음 
+오픈북 오픈노트 구글링ㄱ ㅏ능
+
+프라블럼셋 6-7번같은 문제랑 비슷하게 냄
+
+
+
+
